@@ -1,0 +1,40 @@
+
+<agm-map [latitude]="lat" [longitude]="lng">
+        <agm-marker *ngFor= "let lugar of lugares" [latitude]="lugar.lat" [longitude]="lugar.lng"></agm-marker>
+      </agm-map>
+      <hr/>
+     <!--  <div id="cuadrado" [@contenerdorAnimable] = "state" (@contenerdorAnimable.start) = "animacionInicia($event)" (@contenerdorAnimable.done) = "animacionTermina($event)" ></div>
+    <a class="btn btn-success" (click)= "animar()">animar</a> -->
+     <div class="container"> 
+        <div class="row">
+          <div class="col-md-8">
+            <h2>Lugares Cercanos</h2>
+          
+            <button type="button" class="btn btn-success" routerLink="/crear/new">Crear Nuevo Negocio</button>
+           <!--para usar la directiva ng if --> 
+                <ul class="list-group" >
+                <!--se crea un nuevo contenedor para asi poder poner 2 directivas -->
+                    <ng-container *ngFor = "let lugar of lugares">
+                   
+                         <li class="list-group-item"  >
+                            <a routerLink="/crear/{{lugar.id}}"><h3> {{lugar.nombre }} </h3> </a>
+                              <br/>
+                              <small>Creado: {{lugar.id | date: 'medium' | uppercase}}  </small>     
+                                
+                              <p [innerHtml] = "lugar.desciption | linkifystr">  </p>                     
+                          </li>
+                   
+                    </ng-container>
+                  </ul>
+             </div>
+             <div class="col-md-4" [@contenerdorAnimable] = "state" >
+               <h2>Destacados</h2>
+           <ng-container *ngFor="let lugar of lugares">
+            <div class="bg-warning padding" *ngIf="lugar.plan == 'pagado'">
+                <a routerLink="/crear/{{lugar.id}}"><h3>{{lugar.nombre}}</h3></a>
+                <p [innerHtml]="lugar.description | linkifystr"></p>
+            </div>
+        </ng-container>
+           </div>
+         </div>
+      </div>

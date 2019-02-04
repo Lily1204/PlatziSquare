@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+agm-map {
+    height: 300px;
+  }
+
+  .numero_par{
+    background-color:rgb(233, 188, 192);
+    color: rgb(179, 32, 57); 
+  }
+
+  #cuadrado{
+    width: 200px;
+    height: 200px;
+    background-color: tomato;
+   
+  }
